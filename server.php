@@ -39,7 +39,7 @@ $server->register('set_data',                    // method name
 );
 $server->register('get_data',                    // method name
     array('room' => 'xsd:string'),
-    array('return' => 'tns:Get_Air'),    // output parameters
+    array('return' => 'xsd:string'),    // output parameters
     'urn:air_data',                         // namespace
     'urn:air_data#get_data'                   // soapaction
 );
@@ -60,21 +60,22 @@ function set_data($data) {
     return $send;
 }
 function get_data($room) {
-    $dbcon =  mysqli_connect('us-cdbr-iron-east-01.cleardb.net', 'b2efec9f22e714', '2d88bcce', 'heroku_c9738a7c9866d40') or die('not connect database'.mysqli_connect_error());
-    mysqli_set_charset($dbcon, 'utf8');
-	// >= '2010-01-31 12:01:01'
-	$query = "SELECT * FROM data_table";
-    $result = mysqli_query($dbcon, $query);
+ //    $dbcon =  mysqli_connect('us-cdbr-iron-east-01.cleardb.net', 'b2efec9f22e714', '2d88bcce', 'heroku_c9738a7c9866d40') or die('not connect database'.mysqli_connect_error());
+ //    mysqli_set_charset($dbcon, 'utf8');
+	// // >= '2010-01-31 12:01:01'
+	// $query = "SELECT * FROM data_table";
+ //    $result = mysqli_query($dbcon, $query);
     
-    if($result){
-        $data = array();
-	    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-	        $data[] = array('room'=>$row['room'], 'time'=>$row['time'], 'temp'=>$row['temp'], 'humidity'=>$row['humidity']);
-	    }
-    }
+ //    if($result){
+ //        $data = array();
+	//     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+	//         $data[] = array('room'=>$row['room'], 'time'=>$row['time'], 'temp'=>$row['temp'], 'humidity'=>$row['humidity']);
+	//     }
+ //    }
     
-    mysqli_close($dbcon);
-    return array('Get_Air' => $data);
+ //    mysqli_close($dbcon);
+ //    return array('Get_Air' => $data);
+	return "fern";
 }
 
 // Use the request to (try to) invoke the service
