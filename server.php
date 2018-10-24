@@ -7,7 +7,7 @@ $server = new soap_server();
 $server->configureWSDL('airdata', 'urn:airdata');
 // Register the data structures used by the service
 $server->wsdl->addComplexType(
-    'Air_Data',
+    'AirData',
     'complexType',
     'struct',
     'sequence',
@@ -20,19 +20,19 @@ $server->wsdl->addComplexType(
     )
 );
 $server->wsdl->addComplexType(
-    'Get_Air',
+    'GetAir',
     'complexType',
     'struct',
     'sequence',
     '',
     array(
-        'Get_Air' => array('name' => 'Get_Air','minOccurs'=> '0', 'maxOccurs' =>'unbounded','nillable' => 'true', type=>'tns:Air_Data')
+        'GetAir' => array('name' => 'GetAir','minOccurs'=> '0', 'maxOccurs' =>'unbounded','nillable' => 'true', type=>'tns:AirData')
     )
 );
 
 // Register the method to expose
 $server->register('set_data',                    // method name
-    array('data' => 'tns:Air_Data'),          // input parameters
+    array('data' => 'tns:AirData'),          // input parameters
     array('return' => 'xsd:string'),    // output parameters
     'urn:airdata'                  // soapaction
 );
@@ -72,7 +72,7 @@ function get_data($room) {
     }
     
     mysqli_close($dbcon);
-    return array('Get_Air' => $data);
+    return array('GetAir' => $data);
 }
 
 // Use the request to (try to) invoke the service
