@@ -4,7 +4,7 @@ require_once('lib/nusoap.php');
 // Create the server instance
 $server = new soap_server();
 // Initialize WSDL support
-$server->configureWSDL('air_data', 'urn:air_data');
+$server->configureWSDL('airdata', 'urn:airdata');
 // Register the data structures used by the service
 // $server->wsdl->addComplexType(
 //     'Air_Data',
@@ -40,8 +40,8 @@ $server->configureWSDL('air_data', 'urn:air_data');
 $server->register('get_data',                    // method name
     array('room' => 'xsd:string'),
     array('return' => 'xsd:string'),    // output parameters
-    'urn:air_data',                         // namespace
-    'urn:air_data#get_data'                   // soapaction
+    'urn:airdata',                         // namespace
+    'urn:airdata#get_data'                   // soapaction
 );
 
 
