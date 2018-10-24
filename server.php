@@ -40,8 +40,7 @@ $server->configureWSDL('airdata', 'urn:airdata');
 $server->register('get_data',                    // method name
     array('room' => 'xsd:string'),
     array('return' => 'xsd:string'),    // output parameters
-    'urn:airdata',                         // namespace
-    'urn:airdata#get_data'                   // soapaction
+    'urn:airdata'                  // soapaction
 );
 
 
