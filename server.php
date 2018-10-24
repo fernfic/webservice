@@ -34,8 +34,7 @@ $server->wsdl->addComplexType(
 $server->register('set_data',                    // method name
     array('data' => 'tns:Air_Data'),          // input parameters
     array('return' => 'xsd:string'),    // output parameters
-    'urn:air_data',                         // namespace
-    'urn:air_data#set_data'                   // soapaction
+    'urn:airdata'                  // soapaction
 );
 $server->register('get_data',                    // method name
     array('room' => 'xsd:string'),
