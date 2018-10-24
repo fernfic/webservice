@@ -60,7 +60,7 @@ function set_data($data) {
     return $send;
 }
 function get_data($room) {
-    $dbcon =  mysqli_connect('us-cdbr-iron-east-01.cleardb.net', 'b2efec9f22e714', '2d88bcce', 'heroku_c9738a7c9866d40') or die('not connect database'.mysqli_connect_error());
+    $dbcon =  mysqli_connect('us-cdbr-iron-east-01.cleardb.net', 'b2efec9f22e714', '2d88bcce', 'heroku_c9738a7c9866d40'));
     mysqli_set_charset($dbcon, 'utf8');
 	// >= '2010-01-31 12:01:01'
 	$query = "SELECT * FROM data_table";
@@ -74,9 +74,7 @@ function get_data($room) {
     }
     
     mysqli_close($dbcon);
-    return array(
-        'Get_Air' => $data
-        );
+    return array('Get_Air' => $data);
 }
 
 // Use the request to (try to) invoke the service
