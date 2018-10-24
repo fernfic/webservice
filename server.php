@@ -46,7 +46,7 @@ $server->register('get_data',                    // method name
 
 // Define the method as a PHP function
 function set_data($data) {
-    $dbcon =  mysqli_connect('localhost', 'wolfbit', '', 'air_data') or die('not connect database'.mysqli_connect_error());
+    $dbcon =  mysqli_connect('us-cdbr-iron-east-01.cleardb.net', 'b2efec9f22e714', '2d88bcce', 'heroku_c9738a7c9866d40') or die('not connect database'.mysqli_connect_error());
 	mysqli_set_charset($dbcon, 'utf8');
 	$room = $data['room'];
 	$time = $data['time'];
@@ -60,7 +60,7 @@ function set_data($data) {
     return $send;
 }
 function get_data($room) {
-    $dbcon =  mysqli_connect('localhost', 'wolfbit', '', 'air_data') or die('not connect database'.mysqli_connect_error());
+    $dbcon =  mysqli_connect('us-cdbr-iron-east-01.cleardb.net', 'b2efec9f22e714', '2d88bcce', 'heroku_c9738a7c9866d40') or die('not connect database'.mysqli_connect_error());
 	mysqli_set_charset($dbcon, 'utf8');
 // 	$query = "SELECT * FROM data_table WHERE room='$room'";
 	$query = "SELECT * FROM data_table";
