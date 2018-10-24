@@ -52,6 +52,7 @@ $server->register('set_data',                    // method name
     'urn:airdata'                  // soapaction
 );
 
+
 function get_data($room) {
     $dbcon =  mysqli_connect('us-cdbr-iron-east-01.cleardb.net', 'b2efec9f22e714', '2d88bcce', 'heroku_c9738a7c9866d40') or die('not connect database'.mysqli_connect_error());
     mysqli_set_charset($dbcon, 'utf8');
@@ -75,9 +76,5 @@ $server->register('get_data',                    // method name
     array('return' => 'tns:GetAir'),    // output parameters
     'urn:airdata');                // soapaction
 
-
-// Use the request to (try to) invoke the service
-// $HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
-// $server->service($HTTP_RAW_POST_DATA);
 @$server->service(file_get_contents("php://input"));
 ?>
