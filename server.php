@@ -57,7 +57,7 @@ function get_data($room) {
     if($result){
         $data = array();
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $data[] = array('roomid'=>$row['roomid'], 'time'=>$row['time'], 'temperature'=>$row['temperature'], 'humidity'=>$row['humidity']);
+            $data[] = array('room'=>$row['room'], 'time'=>$row['time'], 'temp'=>$row['temp'], 'humidity'=>$row['humidity']);
         }
     }
     mysqli_close($dbcon);
