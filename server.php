@@ -148,7 +148,7 @@ function send_kerry($data) {
     return $send;
 }
 $server->register('send_kerry',                    // method name
-    array('data' => 'tns:KerryData'),
+    array('data' => 'tns:GetKerryData'),
     array('return' => 'xsd:string'),    // output parameters
     'urn:testdata'); 
     
