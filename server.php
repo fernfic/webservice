@@ -104,9 +104,8 @@ $server->wsdl->addComplexType(
     'sequence',
     '',
     array(
+        'id' => array('name' => 'id', 'type' => 'xsd:integer'),
         'name' => array('name' => 'name', 'type' => 'xsd:string'),
-        'addr' => array('name' => 'addr', 'type' => 'xsd:string'),
-        'weight' => array('name' => 'weight', 'type' => 'xsd:float'),
     )
 );
 $server->wsdl->addComplexType(
@@ -116,6 +115,7 @@ $server->wsdl->addComplexType(
     'sequence',
     '',
     array(
+        'id' => array('name' => 'id', 'type' => 'xsd:integer'),
         'name' => array('name' => 'name', 'type' => 'xsd:string'),
         'addr' => array('name' => 'addr', 'type' => 'xsd:string'),
         'weight' => array('name' => 'weight', 'type' => 'xsd:float'),
@@ -141,7 +141,7 @@ function send_kerry($data) {
     $addr = $data['addr'];
     $weight = $data['weight'];
     $status = "Not Done";
-    $query = "INSERT INTO kerry (name, addr, weight, status) VALUES('$name','$addr','$weight','$status')";
+    $query = "INSERT INTO kerry ( name, addr, weight, status) VALUES( '$name','$addr','$weight','$status')";
     $result = mysqli_query($dbcon, $query);
     mysqli_close($dbcon);
     $send = "add data complete!";
@@ -156,12 +156,11 @@ function update_kerry($data) {
     $dbcon =  mysqli_connect('us-cdbr-iron-east-01.cleardb.net', 'b2efec9f22e714', '2d88bcce', 'heroku_c9738a7c9866d40') or die('not connect database'.mysqli_connect_error());
     mysqli_set_charset($dbcon, 'utf8');
     $name = $data['name'];
-    $addr = $data['addr'];
-    $weight = $data['weight'];
-    $query = "SELECT * FROM kerry WHERE name='$name' and addr = '$addr' and weight = '$weight'";
+    $id = $data['id'];
+    $query = "SELECT * FROM kerry WHERE name='$name' and id = '$id'";
     $result = mysqli_query($dbcon, $query);
     if($result){
-        $query = "UPDATE kerry SET status='Done' WHERE name='$name' and addr = '$addr'";
+        $query = "UPDATE kerry SET status='Done' WHERE name='$name' and id = '$id'";
         $result = mysqli_query($dbcon, $query);
         $text = "Update Complete";
     }else{
@@ -183,7 +182,7 @@ function get_kerry($name) {
     if($result){
         $data = array();
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $data[] = array('name'=>$row['name'], 'addr'=>$row['addr'], 'weight'=>$row['weight'], 'status'=>$row['status']);
+            $data[] = array('id'=>$row['id'],'name'=>$row['name'], 'addr'=>$row['addr'], 'weight'=>$row['weight'], 'status'=>$row['status']);
         }
     }
     mysqli_close($dbcon);
