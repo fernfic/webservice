@@ -98,7 +98,7 @@ $server->register('get_user',                    // method name
 
 //----------------------------test2 Kerry Data-----------------------------//  
 $server->wsdl->addComplexType(
-    'KerryData',
+    'UpdateKerry',
     'complexType',
     'struct',
     'sequence',
@@ -106,6 +106,18 @@ $server->wsdl->addComplexType(
     array(
         'id' => array('name' => 'id', 'type' => 'xsd:integer'),
         'name' => array('name' => 'name', 'type' => 'xsd:string'),
+    )
+);
+$server->wsdl->addComplexType(
+    'KerryData',
+    'complexType',
+    'struct',
+    'sequence',
+    '',
+    array(
+        'name' => array('name' => 'name', 'type' => 'xsd:string'),
+        'addr' => array('name' => 'addr', 'type' => 'xsd:string'),
+        'weight' => array('name' => 'weight', 'type' => 'xsd:float'),
     )
 );
 $server->wsdl->addComplexType(
@@ -148,7 +160,7 @@ function send_kerry($data) {
     return $send;
 }
 $server->register('send_kerry',                    // method name
-    array('data' => 'tns:GetKerryData'),
+    array('data' => 'tns:KerryData'),
     array('return' => 'xsd:string'),    // output parameters
     'urn:testdata'); 
     
@@ -170,7 +182,7 @@ function update_kerry($data) {
     return $text;
 }
 $server->register('update_kerry',                    // method name
-    array('data' => 'tns:KerryData'),
+    array('data' => 'tns:UpdateKerry'),
     array('return' => 'xsd:string'),    // output parameters
     'urn:testdata');
     
