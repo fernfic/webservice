@@ -34,11 +34,11 @@ $server->wsdl->addComplexType(
 function set_data($data) {
     $dbcon =  mysqli_connect('us-cdbr-iron-east-01.cleardb.net', 'b2efec9f22e714', '2d88bcce', 'heroku_c9738a7c9866d40') or die('not connect database'.mysqli_connect_error());
     mysqli_set_charset($dbcon, 'utf8');
-    $roomid = $data['roomid'];
+    $roomid = $data['room'];
     $time = $data['time'];
-    $temperature = $data['temperature'];
+    $temperature = $data['temp'];
     $humidity = $data['humidity'];
-    $query = "INSERT INTO data_table (roomid, time, temperature, humidity) VALUES('$roomid','$time','$temperature','$humidity')";
+    $query = "INSERT INTO data_table (room, time, temp, humidity) VALUES('$room','$time','$temp','$humidity')";
     $result = mysqli_query($dbcon, $query);
     mysqli_close($dbcon);
     $send = "add data complete!";
